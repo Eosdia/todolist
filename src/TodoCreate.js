@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { MdAdd } from "react-icons/md";
+import { useState } from "react";
+import { useNextId, useTodoDispatch } from "./TodoContext";
 const TodoCreateBox = styled.div`
   width: 100%;
 `;
@@ -29,10 +31,25 @@ const CircleBtn = styled.button`
   font-size: 50px;
 `;
 function TodoCreate() {
+  const [value, setValue] = useState("");
+  const dispatch = useTodoDispatch();
+  const nextid = useNextId();
+  const onChange = (event) => {
+    setValue(event.target.value);
+  };
+  const onSubmit = (event) => {
+    event.preventDefault(); // 새로고침방지
+    dispatch({
+      type: "CREATE",
+      todo: { id: nextid.current, text: value, done: false },
+    });
+    setValue("");
+    nextid.current += 1;
+  };
   return (
     <TodoCreateBox>
-      <InsertForm>
-        <Input />
+      <InsertForm onSubmit={onSubmit}>
+        <Input value={value} onChange={onChange} />
         <CircleBtn>
           <MdAdd />
         </CircleBtn>

@@ -10,23 +10,42 @@ const TodoHeadBlock = styled.div`
   div {
     margin: 0 auto;
   }
-  .time {
+  .day {
+    display: flex;
+  }
+  .flex-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+  h4,
+  h5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+  }
 `;
 
 function TodoHead() {
+  const today = new Date();
+  const dateString = today.toLocaleDateString("ko-KR", {
+    month: "long",
+    day: "numeric",
+  });
+  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
   return (
     <TodoHeadBlock>
       <div className="day">
         <h1>27</h1>
+        <div className="flex-container ">
+          <h4>April</h4>
+          <h5>{dayName}</h5>
+        </div>
       </div>
-      <div className="time">
+      <div className="flex-container">
         <h2>Time Out</h2>
-        <div>
+        <div className="time">
           <MdAlarm />
           16:24:38
         </div>

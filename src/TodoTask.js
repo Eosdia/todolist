@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTodoState } from "./TodoContext";
 
 const TodoTaskBlock = styled.div`
   padding: 10px;
@@ -17,15 +18,18 @@ const TodoTaskBlock = styled.div`
 `;
 
 function TodoTask() {
+  const todos = useTodoState();
+  const task = todos.filter((todo) => !todo.done);
+  const done = todos.filter((todo) => todo.done);
   return (
     <TodoTaskBlock>
       <div>
         <h3>Task</h3>
-        <div>3</div>
+        <div>{task.length}</div>
       </div>
       <div>
         <h3>Done</h3>
-        <div>2</div>
+        <div>{done.length}</div>
       </div>
     </TodoTaskBlock>
   );
