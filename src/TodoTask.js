@@ -13,7 +13,7 @@ const TodoTaskBlock = styled.div`
     flex-direction: column;
   }
   h3 {
-    margin-bottom: 5px;
+    margin: 5px 0px;
   }
 `;
 

@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 import { useTodoState } from "./TodoContext";
 
 const TodoListBlock = styled.div`
-  padding: 10px 32px;
+  padding: 10px 28px;
   flex: 1;
   overflow-y: auto;
 `;
